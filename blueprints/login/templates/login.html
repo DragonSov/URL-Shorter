@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Login Page
+{% endblock %}
+
+{% block body %}
+<form action="/login" method="POST">
+    <input type="text" name="username" id="username" placeholder="Введите ваш UserName">
+    <input type="password" name="password" id="password" placeholder="Введите ваш пароль">
+    <input type="submit" value="Войти!">
+</form>
+<form action="/register" method="POST">
+    <input type="text" name="reg-username" id="reg-username" placeholder="Введите ваш UserName">
+    <input type="password" name="reg-password" id="reg-password" placeholder="Введите ваш пароль">
+    <input type="submit" value="Зарегистрироваться!">
+</form>
+<button onclick="window.location.href='/logout';">ВЫйти</button>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+User Profile
+{% endblock %}
+
+{% block body %}
+<div>
+    <h1>Hello, {{ current_user.username }}</h1>
+    <span>Your ID: {{ current_user.id }}</span>
+    <div class="user_urls">
+        <h1>Ваши ссылки:</h1>
+        <ul>
+        {% for url in user_urls %}
+            <li>{{ url.original_url }} - 192.168.0.197:5000/{{ url.short_url }}</li>
+            <form method="post" action="/delete_url">
+                <button name="del-url" value={{ url.short_url }}>Delete!</button>
+            </form>
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+URL Shorter
+{% endblock %}
+
+{% block body %}
+<form method="POST">
+    <input type="text" name="url" id="url" placeholder="Введите полный URL">
+    <input type="submit" value="Сократить!">
+</form>
+{% if short_url %}
+<ul>
+    <li>Ваша сокращённая ссылка: {{ short_url }}</li>
+</ul>
+{% endif %}
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+{% endblock %}
